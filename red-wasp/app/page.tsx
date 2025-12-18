@@ -88,7 +88,7 @@ export default function Home() {
           <p className="uppercase tracking-[0.3em] text-xs text-gray-400">
             AI CREATIVE STUDIO
           </p>
-          <h1 className="text-5xl md:text-8xl font-semibold leading-tight text-white text-left">
+          <h1 className="text-3xl md:text-6xl font-semibold leading-tight text-white text-left">
             Videos & visuals
             <br />
             that actually go viral.
@@ -99,6 +99,30 @@ export default function Home() {
             the feed.
           </p>
 
+        </div>
+      </section>
+
+      {/* ABOUT US SECTION */}
+      <section
+        id="about"
+        className="px-6 md:px-12 lg:px-20 py-16 border-t border-gray-900"
+      >
+        <div className="space-y-6">
+          <h2 className="text-sm uppercase tracking-[0.3em] text-gray-400">
+            About us
+          </h2>
+          <div className="space-y-4">
+            <p className="text-xl md:text-2xl font-bold text-gray-300">
+              We the creative studio where human imagination meets artificial intelligence.
+            </p>
+            <p className="text-xl md:text-2xl font-bold text-gray-300">
+              We blend strategic thinking, artistic intuition, and advanced AI tools to bring bold ideas to life. Every project is driven by creativity first — with technology enhancing, not replacing, the human touch.
+            </p>
+            <p className="text-xl md:text-2xl font-bold text-gray-300">
+              We don’t just create visuals or campaigns.
+              We design experiences, build identities, and transform concepts into living, breathing creative work.
+            </p>
+          </div>
         </div>
       </section>
 
