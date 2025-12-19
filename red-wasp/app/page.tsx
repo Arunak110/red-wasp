@@ -29,21 +29,24 @@ export default function Home() {
   const works = [
     {
       src: "/work/KFC.mp4",
+      poster: "/work/KFC.jpg",
       brand: "KFC",
-      title: "Adventure Chicken",
+      title: "Adventure chicken",
       result: "12M+ views · CTR +38%",
     },
     {
-      src: "/work/luxury-watch.mp4",
+      src: "/work/watch.mp4",
+      poster: "/work/watch.jpg",
       brand: "AUREX",
       title: "Luxury Watch Teaser",
-      result: "Product launch · High engagement",
+      result: "High engagement launch",
     },
     {
-      src: "/work/ai-fashion.mp4",
+      src: "/work/ai.mp4",
+      poster: "/work/ai.jpg",
       brand: "AI CONCEPT",
       title: "Future Fashion Film",
-      result: "Experimental visual · Viral reach",
+      result: "Experimental visual",
     },
   ];
 
@@ -97,6 +100,7 @@ export default function Home() {
           loop
           muted
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/hero.mp4" type="video/mp4" />
@@ -171,12 +175,15 @@ export default function Home() {
               key={index}
               className="group rounded-2xl border border-gray-800 overflow-hidden"
             >
-              <video
-                className="aspect-video w-full object-cover"
-                controls
-                preload="metadata"
-                src={work.src}
-              />
+              <div className="aspect-video bg-black">
+                <video
+                  src={work.src}
+                  poster={work.poster}
+                  controls
+                  preload="metadata"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div className="p-5 space-y-1">
                 <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
                   {work.brand}
