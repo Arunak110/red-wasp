@@ -26,6 +26,27 @@ export default function Home() {
     setYear(new Date().getFullYear());
   }, []);
 
+  const works = [
+    {
+      src: "/work/KFC.mp4",
+      brand: "KFC",
+      title: "Adventure Chicken",
+      result: "12M+ views · CTR +38%",
+    },
+    {
+      src: "/work/luxury-watch.mp4",
+      brand: "AUREX",
+      title: "Luxury Watch Teaser",
+      result: "Product launch · High engagement",
+    },
+    {
+      src: "/work/ai-fashion.mp4",
+      brand: "AI CONCEPT",
+      title: "Future Fashion Film",
+      result: "Experimental visual · Viral reach",
+    },
+  ];
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
@@ -133,7 +154,7 @@ export default function Home() {
         id="work"
         className="px-6 md:px-12 lg:px-20 py-16 border-t border-gray-900"
       >
-        <div className="flex items-end justify-between mb-8">
+        <div className="mb-8">
           <div>
             <h2 className="text-sm uppercase tracking-[0.3em] text-gray-400">
               Our work
@@ -142,25 +163,25 @@ export default function Home() {
               Campaigns, spots & viral clips.
             </p>
           </div>
-          <span className="text-xs text-gray-500">
-            Replace these blocks with your real videos & images.
-          </span>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((i) => (
+          {works.map((work, index) => (
             <div
-              key={i}
+              key={index}
               className="group rounded-2xl border border-gray-800 overflow-hidden"
             >
-              <div className="aspect-video bg-gray-800 flex items-center justify-center text-gray-400 text-xs">
-                Video / image {i}
-              </div>
-              <div className="p-4 space-y-1">
-                <p className="text-xs uppercase tracking-[0.2em] text-gray-500">
-                  BRAND NAME
+              <video
+                className="aspect-video w-full object-cover"
+                controls
+                preload="metadata"
+                src={work.src}
+              />
+              <div className="p-5 space-y-1">
+                <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
+                  {work.brand}
                 </p>
-                <p className="text-sm font-medium">Campaign title goes here</p>
+                <p className="text-sm font-medium">{work.title}</p>
                 <p className="text-xs text-gray-500">
                   Short result: &gt; 10M views, CTR +40%, etc.
                 </p>
