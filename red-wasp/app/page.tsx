@@ -21,6 +21,7 @@ export default function Home() {
 
   const [status, setStatus] = useState<Status>("idle");
   const [year, setYear] = useState<number>(0);
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
@@ -76,18 +77,16 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* FLOATING LINKS */}
-      <div className="fixed top-4 left-6 md:left-12 lg:left-20 z-50">
+      <div className="fixed top-4 right-6 md:right-12 lg:right-20 z-50 flex items-center gap-x-8">
         <a
           href="#about"
-          className="text-white text-xl font-bold"
+          className="text-white text-lg font-bold"
         >
           ABOUT US
         </a>
-      </div>
-      <div className="fixed top-4 right-6 md:right-12 lg:right-20 z-50">
         <a
           href="#contact"
-          className="text-white text-xl font-bold"
+          className="text-white text-lg font-bold"
         >
           CONTACT US
         </a>
@@ -113,12 +112,12 @@ export default function Home() {
           <p className="uppercase tracking-[0.3em] text-xs text-gray-400">
             AI CREATIVE STUDIO
           </p>
-          <h1 className="text-3xl md:text-6xl font-semibold leading-tight text-white text-left">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight">
             Videos & visuals
             <br />
             that actually go viral.
           </h1>
-          <p className="text-gray-300 max-w-xl">
+          <p className="text-sm md:text-base text-gray-300 max-w-xl">
             We craft bold, scroll-stopping campaigns using AI, motion, and
             storytelling so your brand doesn&apos;t just show up—it takes over
             the feed.
@@ -156,9 +155,9 @@ export default function Home() {
       {/* WORK SECTION */}
       <section
         id="work"
-        className="px-6 md:px-12 lg:px-20 py-16 border-t border-gray-900"
+        className="py-16 border-t border-gray-900"
       >
-        <div className="mb-8">
+        <div className="px-6 md:px-12 lg:px-20 mb-8">
           <div>
             <h2 className="text-sm uppercase tracking-[0.3em] text-gray-400">
               Our work
@@ -169,30 +168,44 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="space-y-8">
           {works.map((work, index) => (
             <div
               key={index}
-              className="group rounded-2xl border border-gray-800 overflow-hidden"
+              className="relative w-full h-[90vh] overflow-hidden bg-black cursor-pointer"
+              onClick={() => playingIndex !== index && setPlayingIndex(index)}
             >
-              <div className="aspect-video bg-black">
+              {playingIndex === index ? (
                 <video
                   src={work.src}
                   poster={work.poster}
                   controls
+                  autoPlay
                   preload="metadata"
-                  className="w-full h-full object-cover"
+                  onEnded={() => setPlayingIndex(null)}
+                  className="w-full h-full object-contain"
                 />
-              </div>
-              <div className="p-5 space-y-1">
-                <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
-                  {work.brand}
-                </p>
-                <p className="text-sm font-medium">{work.title}</p>
-                <p className="text-xs text-gray-500">
-                  Short result: &gt; 10M views, CTR +40%, etc.
-                </p>
-              </div>
+              ) : (
+                <>
+                  <img
+                    src={work.poster}
+                    alt={work.title}
+                    className="w-full h-full object-contain"
+                  />
+                  <div className="absolute inset-0 bg-black/20"></div>
+                  <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 lg:p-8 bg-gradient-to-b from-black/80 to-transparent">
+                    <p className="text-3xl font-bold uppercase tracking-[0.3em] text-gray-300">
+                      {work.brand}
+                    </p>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-8 bg-gradient-to-t from-black/80 to-transparent">
+                    <p className="text-lg font-medium">{work.title}</p>
+                    <p className="text-sm text-gray-300">
+                      {work.result}
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>
