@@ -172,7 +172,7 @@ export default function Home() {
           {works.map((work, index) => (
             <div
               key={index}
-              className="relative w-full h-[90vh] overflow-hidden bg-black cursor-pointer"
+              className="relative w-full aspect-video overflow-hidden bg-black cursor-pointer"
               onClick={() => playingIndex !== index && setPlayingIndex(index)}
             >
               {playingIndex === index ? (
