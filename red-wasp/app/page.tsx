@@ -77,7 +77,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* FLOATING LINKS */}
-      <div className="fixed top-4 right-6 md:right-12 lg:right-20 z-50 flex items-center gap-x-8">
+      <div className="fixed top-4 right-12 lg:right-20 z-50 flex items-center gap-x-8">
         <a
           href="#about"
           className="text-white text-lg font-bold"
@@ -108,16 +108,16 @@ export default function Home() {
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/50"></div>
 
-        <div className="relative z-10 flex-1 space-y-6 mt-32 px-6 md:px-12 lg:px-20">
+        <div className="relative z-10 flex-1 space-y-6 mt-32 px-12 lg:px-20">
           <p className="uppercase tracking-[0.3em] text-xs text-gray-400">
             AI CREATIVE STUDIO
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight">
+          <h1 className="text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight">
             Videos & visuals
             <br />
             that actually go viral.
           </h1>
-          <p className="text-sm md:text-base text-gray-300 max-w-xl">
+          <p className="text-base text-gray-300 max-w-xl">
             We craft bold, scroll-stopping campaigns using AI, motion, and
             storytelling so your brand doesn&apos;t just show up—it takes over
             the feed.
@@ -129,7 +129,7 @@ export default function Home() {
       {/* ABOUT US SECTION */}
       <section
         id="about"
-        className="px-6 md:px-12 lg:px-20 py-16 border-t border-gray-900"
+        className="px-12 lg:px-20 py-16 border-t border-gray-900"
       >
         <div className="space-y-6">
           <h2 className="text-sm uppercase tracking-[0.3em] text-gray-400">
@@ -157,12 +157,12 @@ export default function Home() {
         id="work"
         className="py-16 border-t border-gray-900"
       >
-        <div className="px-6 md:px-12 lg:px-20 mb-8">
+        <div className="px-12 lg:px-20 mb-8">
           <div>
             <h2 className="text-sm uppercase tracking-[0.3em] text-gray-400">
               Our work
             </h2>
-            <p className="text-2xl md:text-3xl mt-2">
+            <p className="text-3xl mt-2">
               Campaigns, spots & viral clips.
             </p>
           </div>
@@ -172,7 +172,7 @@ export default function Home() {
           {works.map((work, index) => (
             <div
               key={index}
-              className="relative w-full h-[90vh] overflow-hidden bg-black cursor-pointer"
+              className="relative w-full aspect-video overflow-hidden bg-black cursor-pointer"
               onClick={() => playingIndex !== index && setPlayingIndex(index)}
             >
               {playingIndex === index ? (
@@ -183,14 +183,14 @@ export default function Home() {
                   autoPlay
                   preload="metadata"
                   onEnded={() => setPlayingIndex(null)}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               ) : (
                 <>
                   <img
                     src={work.poster}
                     alt={work.title}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-black/20"></div>
                   <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 lg:p-8 bg-gradient-to-b from-black/80 to-transparent">
@@ -214,14 +214,14 @@ export default function Home() {
       {/* CONTACT SECTION */}
       <section
         id="contact"
-        className="px-6 md:px-12 lg:px-20 py-16 border-t border-gray-900"
+        className="px-12 lg:px-20 py-16 border-t border-gray-900"
       >
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div className="space-y-4">
             <h2 className="text-sm uppercase tracking-[0.3em] text-gray-400">
               Contact us
             </h2>
-            <p className="text-2xl md:text-3xl">
+            <p className="text-3xl">
               Tell us about your brand. <br />
               We&apos;ll bring the ideas.
             </p>
@@ -292,7 +292,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="px-6 md:px-12 lg:px-20 py-6 border-t border-gray-900 text-xs text-gray-500 flex justify-between">
+      <footer className="px-12 lg:px-20 py-6 border-t border-gray-900 text-xs text-gray-500 flex justify-between">
         <span>© {year} RED WASP MEDIA</span>
         <span>Terms · Privacy</span>
       </footer>
