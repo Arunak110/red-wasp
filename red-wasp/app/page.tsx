@@ -35,20 +35,6 @@ export default function Home() {
       title: "Adventure chicken",
       result: "12M+ views · CTR +38%",
     },
-    {
-      src: "/work/watch.mp4",
-      poster: "/work/watch.jpg",
-      brand: "AUREX",
-      title: "Luxury Watch Teaser",
-      result: "High engagement launch",
-    },
-    {
-      src: "/work/ai.mp4",
-      poster: "/work/ai.jpg",
-      brand: "AI CONCEPT",
-      title: "Future Fashion Film",
-      result: "Experimental visual",
-    },
   ];
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -77,7 +63,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* FLOATING LINKS */}
-      <div className="fixed top-4 right-12 lg:right-20 z-50 flex items-center gap-x-8">
+      <div className="fixed top-4 right-6 sm:right-12 lg:right-20 z-50 flex items-center gap-x-8">
         <a
           href="#about"
           className="text-white text-lg font-bold"
