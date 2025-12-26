@@ -1,0 +1,2 @@
+- [ ] Add fixed header in page.tsx with "RED WASP" text on top left
+- [ ] Update metadata title in layout.tsx to "RED WASP"
