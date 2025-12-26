@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Your Brand Name",
+  title: "RED WASP",
   description: "AI-powered creative studio for viral campaigns.",
 };
 
