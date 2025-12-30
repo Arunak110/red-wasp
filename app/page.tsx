@@ -63,23 +63,22 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* HEADER */}
-      <div className="fixed top-4 left-4 sm:left-6 md:left-12 lg:left-20 z-50">
-        <h1 className="text-white text-sm sm:text-lg font-bold">RED WASP</h1>
-      </div>
-      {/* FLOATING LINKS */}
-      <div className="fixed top-4 right-4 sm:right-6 md:right-12 lg:right-20 z-50 flex items-center gap-x-4 sm:gap-x-8">
-        <a
-          href="#about"
-          className="text-white text-sm sm:text-lg font-bold"
-        >
-          ABOUT US
-        </a>
-        <a
-          href="#contact"
-          className="text-white text-sm sm:text-lg font-bold"
-        >
-          CONTACT US
-        </a>
+      <div className="fixed top-4 left-6 right-6 sm:left-12 sm:right-12 lg:left-20 lg:right-20 z-50 flex justify-between items-center">
+        <h1 className="text-white text-lg sm:text-xl md:text-2xl font-bold">RED WASP</h1>
+        <div className="flex items-center gap-x-4 sm:gap-x-8">
+          <a
+            href="#about"
+            className="text-white text-sm sm:text-lg font-bold"
+          >
+            ABOUT US
+          </a>
+          <a
+            href="#contact"
+            className="text-white text-sm sm:text-lg font-bold"
+          >
+            CONTACT US
+          </a>
+        </div>
       </div>
       {/* HERO SECTION */}
       <section className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden">
@@ -166,15 +165,23 @@ export default function Home() {
               onClick={() => playingIndex !== index && setPlayingIndex(index)}
             >
               {playingIndex === index ? (
-                <video
-                  src={work.src}
-                  poster={work.poster}
-                  controls
-                  autoPlay
-                  preload="metadata"
-                  onEnded={() => setPlayingIndex(null)}
-                  className="w-full h-full object-cover"
-                />
+                <div className="relative w-full h-full">
+                  <video
+                    src={work.src}
+                    poster={work.poster}
+                    controls
+                    autoPlay
+                    preload="metadata"
+                    onEnded={() => setPlayingIndex(null)}
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    onClick={() => setPlayingIndex(null)}
+                    className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded hover:bg-black/70"
+                  >
+                    ✕
+                  </button>
+                </div>
               ) : (
                 <>
                   <img
