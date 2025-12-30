@@ -33,16 +33,29 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        setIsHeaderVisible(false);
-      } else if (currentScrollY < lastScrollY.current) {
+      const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
+
+      if (isMobile) {
+        // On mobile, keep header always visible or adjust logic
         setIsHeaderVisible(true);
+      } else {
+        // On laptop/desktop, apply scroll-based hiding
+        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+          setIsHeaderVisible(false);
+        } else if (currentScrollY < lastScrollY.current) {
+          setIsHeaderVisible(true);
+        }
       }
       lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll); // Handle window resize
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const works = [
