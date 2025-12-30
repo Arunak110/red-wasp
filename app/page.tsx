@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, FormEvent } from "react";
-import { useRef } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -24,7 +23,6 @@ export default function Home() {
   const [year, setYear] = useState<number>(0);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(true);
-  const lastScrollY = useRef<number>(0);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
@@ -32,29 +30,13 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
-
-      if (isMobile) {
-        // On mobile, keep header always visible or adjust logic
-        setIsHeaderVisible(true);
-      } else {
-        // On laptop/desktop, apply scroll-based hiding
-        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-          setIsHeaderVisible(false);
-        } else if (currentScrollY < lastScrollY.current) {
-          setIsHeaderVisible(true);
-        }
-      }
-      lastScrollY.current = currentScrollY;
+      setIsHeaderVisible(window.scrollY === 0);
     };
 
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll); // Handle window resize
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -99,7 +81,7 @@ export default function Home() {
           isHeaderVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
       >
-        <h1 className="text-white text-lg sm:text-xl md:text-2xl font-bold">RED WASP</h1>
+        <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">RED WASP</h1>
         <div className="flex items-center gap-x-4 sm:gap-x-8">
           <a
             href="#about"
