@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "red-wasp",
   "version": "0.1.0",
   "private": true,
@@ -25,5 +26,11 @@
     "eslint-config-next": "16.0.5",
     "tailwindcss": "^4",
     "typescript": "^5"
+=======
+  "dependencies": {
+    "mongoose": "^9.0.1",
+    "nodemailer": "^7.0.11",
+    "resend": "^6.6.0"
+>>>>>>> 806d85e8a1acc72a01778a3ac75700d79987b32d
   }
 }

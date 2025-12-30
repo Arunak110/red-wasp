@@ -22,9 +22,22 @@ export default function Home() {
   const [status, setStatus] = useState<Status>("idle");
   const [year, setYear] = useState<number>(0);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(true);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsHeaderVisible(window.scrollY === 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const works = [
@@ -63,8 +76,12 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* HEADER */}
-      <div className="fixed top-4 left-4 right-4 z-50 flex justify-between items-center">
-        <h1 className="text-white text-lg sm:text-xl md:text-2xl font-bold">RED WASP</h1>
+      <div
+        className={`fixed top-4 left-6 right-6 sm:left-12 sm:right-12 lg:left-20 lg:right-20 z-50 flex justify-between items-center transition-all duration-300 ${
+          isHeaderVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+        }`}
+      >
+        <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">RED WASP</h1>
         <div className="flex items-center gap-x-4 sm:gap-x-8">
           <a
             href="#about"
