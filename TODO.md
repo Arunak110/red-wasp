@@ -1,0 +1,1 @@
+- [ ] Add back button to video player for closing while watching
